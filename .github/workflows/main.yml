@@ -17,3 +17,22 @@ jobs:
           name: cv
           path: CV/main.pdf
           retention-days: 1
+  publish-cv:
+    needs: build-cv
+    runs-on: ubuntu-20.04
+    name: update PDF on pages
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout@v2
+        with:
+          ref: artifacts
+      - name: acquire cv
+        uses: actions/download-artifact@v2
+        with:
+          name: cv
+      - name: upload cv to pages
+        run: |
+          git add main.pdf
+          git commit -m "Upload new CV version"
+          git push origin artifacts
+
