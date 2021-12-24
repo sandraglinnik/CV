@@ -10,10 +10,10 @@ jobs:
       - name: build docker image
         run: docker build -t cv -f Dockerfile .
       - name: run docker container
-        run: docker run cv
+        run: docker run --mount src='pwd'/CV,target=/CV,type=bind cv
       - name: upload pdf
         uses: actions/upload-artifact@v2
         with:
           name: cv
-          path: main.pdf
+          path: CV/main.pdf
           retention-days: 1

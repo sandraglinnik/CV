@@ -18,8 +18,6 @@ RUN apt-get install --yes --no-install-recommends \
     texlive-generic-extra \
     texlive-bibtex-extra
 
-COPY CV /CV
-
 ADD start.sh /
 RUN chmod +x /start.sh
 CMD ["/start.sh"]
