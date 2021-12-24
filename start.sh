@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd CV
-pdflatex -interaction=nonstopmode main.tex &> /dev/null
+pdflatex -interaction=nonstopmode main.tex
 
