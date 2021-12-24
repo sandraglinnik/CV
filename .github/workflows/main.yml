@@ -1,0 +1,19 @@
+name: update-cv
+on: [push]
+jobs:
+  build-cv:
+    runs-on: ubuntu-20.04
+    name: build PDF via docker
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout@v2
+      - name: build docker image
+        run: docker build -t cv -f Dockerfile .
+      - name: run docker container
+        run: docker run cv
+      - name: upload pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: cv
+          path: CV/main.pdf
+          retention-days: 1
