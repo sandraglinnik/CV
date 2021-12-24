@@ -35,6 +35,8 @@ jobs:
           name: cv
       - name: upload cv to pages
         run: |
+          git config user.name 'Alexandra Glinnik'
+          git config user.email 'sandraglinnik@gmail.com'
           git add main.pdf
           git commit -m "Upload new CV version"
           git push origin artifacts
